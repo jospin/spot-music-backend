@@ -1,0 +1,2 @@
+## Criando uma estrutura para todos os componentes 
+Todos os componentens estão inicializados e podem ser iniciados de analytics a playlist. Cada um tem o seu Dockerfile com a versão do python que deverá ser utilizada.
