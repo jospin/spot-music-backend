@@ -1,0 +1,120 @@
+version: '3.5'
+services:
+    cliente:
+        image: cliente
+        ports:
+            - "80:80"
+        networks:
+            - my-network
+        depends_on:
+            - db-cliente
+
+    db-cliente:
+      image: mysql:5.7
+      ports:
+          - "3306:3306"
+      environment:
+          MYSQL_ROOT_PASSWORD: RootClient
+          MYSQL_DATABASE: Company
+      networks:
+          - my-network
+
+    analytics:
+        image: analytics
+        ports:
+            - "80:81"
+        networks:
+            - my-network
+        depends_on:
+            - db-analytics
+
+    db-analytics:
+      image: mysql:5.7
+      ports:
+          - "3306:3307"
+      environment:
+          MYSQL_ROOT_PASSWORD: RootAnalytics
+          MYSQL_DATABASE: Company
+      networks:
+          - my-network
+
+    musica:
+        image: musica
+        ports:
+            - "80:82"
+        networks:
+            - my-network
+        depends_on:
+            - db-musica
+
+    db-musica:
+      image: mysql:5.7
+      ports:
+          - "3306:3308"
+      environment:
+          MYSQL_ROOT_PASSWORD: RootMusic
+          MYSQL_DATABASE: Company
+      networks:
+          - my-network
+
+    ordenacao:
+        image: ordenacao
+        ports:
+            - "80:83"
+        networks:
+            - my-network
+        depends_on:
+            - db-ordenacao
+
+    db-ordenacao:
+      image: mysql:5.7
+      ports:
+          - "3306:3309"
+      environment:
+          MYSQL_ROOT_PASSWORD: RootOrdenacao
+          MYSQL_DATABASE: Company
+      networks:
+          - my-network
+
+    planos:
+        image: ordenacao
+        ports:
+            - "80:84"
+        networks:
+            - my-network
+        depends_on:
+            - db-planos
+
+    db-planos:
+      image: mysql:5.7
+      ports:
+          - "3306:3310"
+      environment:
+          MYSQL_ROOT_PASSWORD: RootPlanos
+          MYSQL_DATABASE: Company
+      networks:
+          - my-network
+
+    playlist:
+        image: playlist
+        ports:
+            - "80:85"
+        networks:
+            - my-network
+        depends_on:
+            - db-playlist
+
+    db-playlist:
+      image: mysql:5.7
+      ports:
+          - "3306:3311"
+      environment:
+          MYSQL_ROOT_PASSWORD: RootPlaylist
+          MYSQL_DATABASE: Company
+      networks:
+          - my-network          
+
+networks:
+  my-network:
+    driver:
+      bridge            
